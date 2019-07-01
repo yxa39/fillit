@@ -6,7 +6,7 @@
 #    By: yxie <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/01 09:26:38 by yxie              #+#    #+#              #
-#    Updated: 2019/07/01 12:45:35 by yxie             ###   ########.fr        #
+#    Updated: 2019/07/01 14:49:23 by yxie             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRC_PATH = ./srcs/
 INC_PATH = ./includes/
 LFT_PATH = ./libft/
 
-SRC_NAME = main.c
+SRC_NAME = *.c
 
 SRCS = $(addprefix $(SRC_PATH), $(SRC_NAME))
 all: $(NAME)
@@ -35,6 +35,6 @@ clean:
 
 fclean: clean
 	@make fclean -C $(LFT_PATH)
-	@rm fillit
+	@rm -f fillit
 
 re: fclean all
