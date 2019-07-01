@@ -6,12 +6,11 @@
 /*   By: yxie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 09:56:41 by yxie              #+#    #+#             */
-/*   Updated: 2019/07/01 10:21:44 by yxie             ###   ########.fr       */
+/*   Updated: 2019/07/01 12:44:59 by yxie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include "libft/libft.h"
 
 /*int	validate(char* file_name)
 {
@@ -27,7 +26,7 @@ void	print_blocks(t_blocks blocks)
 		count = 0;
 		while (count < 4)
 		{
-			printf("%dth:(%d, %d)\n", blocks.n, (blocks.x)[blocks.n][count], (blocks.y)[blocks.n][count]);
+	//		printf("%dth:(%d, %d)\n", blocks.n, (blocks.x)[blocks.n][count], (blocks.y)[blocks.n][count]);
 			count++;
 		}
 		blocks.n++;
@@ -40,7 +39,8 @@ void	print_board(t_board board)
 	board.j = 0;
 	while (board.i < (board.size))
 	{
-			printf("%s\n", board.array +  board.i * (board.size + 1));
+			ft_putstr(board.array +  board.i * (board.size + 1));
+			ft_putchar('\n');
 			board.i++;
 	}
 }
@@ -333,7 +333,10 @@ int	main(int argc, char **argv)
 	t_board		*pt_board;
 
 	if (argc != 2)
+	{
 		ft_putstr("usage: ./fillit file");
+		return (1);
+	}
 	file_name = argv[1];
 //	validate(file_name);
 	num_tetris = num_of_tetris(file_name);
