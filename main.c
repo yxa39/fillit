@@ -6,17 +6,17 @@
 /*   By: yxie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 09:56:41 by yxie              #+#    #+#             */
-/*   Updated: 2019/07/01 09:36:00 by yxie             ###   ########.fr       */
+/*   Updated: 2019/07/01 10:21:44 by yxie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include "libft/libft.h"
 
-int	validate(char* file_name)
+/*int	validate(char* file_name)
 {
 	return (0);
-}
+}*/
 
 void	print_blocks(t_blocks blocks)
 {
@@ -335,7 +335,7 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		ft_putstr("usage: ./fillit file");
 	file_name = argv[1];
-	validate(file_name);
+//	validate(file_name);
 	num_tetris = num_of_tetris(file_name);
 	pt_blocks = save_tetris(file_name, num_tetris);
 	pt_board = create_first_board(square_size(num_tetris));
