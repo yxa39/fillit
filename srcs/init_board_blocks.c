@@ -6,40 +6,37 @@
 /*   By: yxie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/01 14:34:30 by yxie              #+#    #+#             */
-/*   Updated: 2019/07/02 17:18:41 by yxie             ###   ########.fr       */
+/*   Updated: 2019/07/03 10:24:13 by yxie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void		save_coordinates(t_blocks *blocks, int fd, int x, int y)
+void		save_coordinates(t_blocks *blocks, int fd, int count)
 {
-	int		count;
 	char	*line;
 	char	*tmp;
 
-	count = 0;
 	while (get_next_line(fd, &line) > 0)
 	{
-		x = 0;
+		blocks->col = 0;
 		tmp = line;
 		if (ft_strcmp(line, "") == 0)
 		{
 			blocks->n++;
-			y = 0;
+			blocks->row = 0;
 			count = 0;
 		}
 		while (*line)
 		{
-			if (*line == '#')
+			if (*line++ == '#')
 			{
-				blocks->x[blocks->n][count] = x;
-				blocks->y[blocks->n][count++] = y;
+				blocks->x[blocks->n][count] = blocks->col;
+				blocks->y[blocks->n][count++] = blocks->row;
 			}
-			line++;
-			x++;
+			blocks->col++;
 		}
-		y++;
+		blocks->row++;
 		free(tmp);
 	}
 }
@@ -49,15 +46,15 @@ t_blocks	*create_blocks(char *file_name, int num_tetris)
 	int			fd;
 	t_blocks	*blocks;
 	char		*line;
-	int			x;
-	int			y;
+	int			count;
 
 	blocks = (t_blocks *)malloc(sizeof(t_blocks));
 	fd = open(file_name, O_RDONLY);
 	blocks->num = num_tetris;
 	blocks->n = 0;
-	y = 0;
-	save_coordinates(blocks, fd, x, y);
+	count = 0;
+	blocks->row = 0;
+	save_coordinates(blocks, fd, count);
 	close(fd);
 	blocks->n = 0;
 	return (blocks);

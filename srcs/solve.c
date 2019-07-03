@@ -6,13 +6,13 @@
 /*   By: yxie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/01 15:09:28 by yxie              #+#    #+#             */
-/*   Updated: 2019/07/02 13:39:05 by yxie             ###   ########.fr       */
+/*   Updated: 2019/07/03 11:16:55 by yxie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-char *copy_board(char *str, int size)
+char	*copy_board(char *str, int size)
 {
 	int		count;
 	char	*new;
@@ -20,7 +20,7 @@ char *copy_board(char *str, int size)
 	int		len;
 
 	count = 0;
-	len = size * 4 * (size + 1);
+	len = size * (size + 1);
 	new = (char *)malloc(sizeof(char) * len);
 	tmp = new;
 	while (count < len)
@@ -37,8 +37,8 @@ void	create_board(t_board *board)
 	t_board	*tmp;
 
 	tmp = board;
-	new = (t_board *)malloc(sizeof(*new));
-	while(tmp->next != NULL)
+	new = (t_board *)malloc(sizeof(t_board));
+	while (tmp->next != NULL)
 		tmp = tmp->next;
 	tmp->next = new;
 	new->size = tmp->size;
@@ -48,20 +48,20 @@ void	create_board(t_board *board)
 	new->next = NULL;
 }
 
-int	new_linked_board(t_board *tmp, t_blocks *blocks, int j, int i)
+int		new_linked_board(t_board *tmp, t_blocks *blocks, int j, int i)
 {
 	t_board *current;
 
 	create_board(tmp);
 	current = tmp;
-	while(current->next != NULL)
+	while (current->next != NULL)
 		current = current->next;
 	current->j = j;
 	current->i = i;
 	return (add_block(current, blocks));
 }
 
-int	fillit(t_board *board, t_blocks *blocks, int j, int i)
+int		fillit(t_board *board, t_blocks *blocks, int j, int i)
 {
 	t_board *tmp;
 
@@ -75,7 +75,7 @@ int	fillit(t_board *board, t_blocks *blocks, int j, int i)
 			blocks->n++;
 			tmp = tmp->next;
 			i = 0;
-			j= 0;
+			j = 0;
 		}
 		else
 		{
@@ -87,26 +87,22 @@ int	fillit(t_board *board, t_blocks *blocks, int j, int i)
 			delete_last_block(board);
 			blocks->n--;
 			if (blocks->n < 0)
-			{
-				free(board->str);
-				free(board);
 				return (0);
-			}
 		}
 	}
 	return (1);
 }
 
-void solve(t_board *board, t_blocks *blocks)
+void	solve(t_board *board, t_blocks *blocks)
 {
-	int	size;
+	int		size;
 	t_board	*new;
 	t_board *tmp;
 
 	if (fillit(board, blocks, 0, 0) == 1)
 	{
 		print_result(board);
-		while (board->next != NULL)
+/*		while (board->next != NULL)
 		{
 			tmp = board;
 			board = board->next;
@@ -114,7 +110,7 @@ void solve(t_board *board, t_blocks *blocks)
 			free(tmp);
 		}
 		free(board->str);
-		free(board);
+		free(board);*/
 	}
 	else
 	{
@@ -124,5 +120,3 @@ void solve(t_board *board, t_blocks *blocks)
 		return (solve(new, blocks));
 	}
 }
-
-

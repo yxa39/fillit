@@ -6,7 +6,7 @@
 /*   By: yxie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 13:10:03 by yxie              #+#    #+#             */
-/*   Updated: 2019/07/02 13:28:30 by yxie             ###   ########.fr       */
+/*   Updated: 2019/07/03 11:26:58 by yxie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,12 @@ int		is_safe(t_board current, t_blocks blocks)
 	count = 1;
 	while (count < 4)
 	{
-		if (current.j + (blocks.x[blocks.n][count] - blocks.x[blocks.n][0]) < 0 ||
-			   	current.j + (blocks.x[blocks.n][count] - blocks.x[blocks.n][0]) >= current.size)
+		if (current.j + (blocks.x[blocks.n][count] - blocks.x[blocks.n][0]) < 0
+	|| current.j + (blocks.x[blocks.n][count] - blocks.x[blocks.n][0]) >=
+current.size)
 			return (0);
-		if (current.i + (blocks.y[blocks.n][count] - blocks.y[blocks.n][0]) >= current.size)
+		if (current.i + (blocks.y[blocks.n][count] - blocks.y[blocks.n][0]) >=
+				current.size)
 			return (0);
 		if (*(current.str + (current.i + (blocks.y[blocks.n][count] -
 blocks.y[blocks.n][0])) * (current.size + 1) + (current.j +
@@ -38,10 +40,13 @@ void	place_block(t_board *current, t_blocks blocks)
 	int	count;
 
 	count = 1;
-	*(current->str + current->i * (current->size + 1) + current->j) = blocks.n + 'A';
+	*(current->str + current->i * (current->size + 1) + current->j) =
+		blocks.n + 'A';
 	while (count < 4)
 	{
-		*(current->str + (current->i + (blocks.y[blocks.n][count] - blocks.y[blocks.n][0])) * (current->size + 1) + (current->j +(blocks.x[blocks.n][count] - blocks.x[blocks.n][0]))) = blocks.n + 'A';
+		*(current->str + (current->i + (blocks.y[blocks.n][count] -
+blocks.y[blocks.n][0])) * (current->size + 1) + (current->j +
+(blocks.x[blocks.n][count] - blocks.x[blocks.n][0]))) = blocks.n + 'A';
 		count++;
 	}
 }
@@ -52,7 +57,8 @@ int		add_block(t_board *current, t_blocks *blocks)
 	{
 		while (current->j < (current->size))
 		{
-			if (*(current->str + current->i * (current->size + 1) + current->j) == '.')
+			if (*(current->str + current->i * (current->size + 1) +
+						current->j) == '.')
 			{
 				if (is_safe(*current, *blocks))
 				{

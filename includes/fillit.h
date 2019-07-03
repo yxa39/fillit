@@ -6,7 +6,7 @@
 /*   By: yxie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/17 14:27:24 by yxie              #+#    #+#             */
-/*   Updated: 2019/07/02 15:11:44 by yxie             ###   ########.fr       */
+/*   Updated: 2019/07/03 10:22:45 by yxie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ typedef struct	s_blocks
 	int	n;
 	int	x[40][4];
 	int	y[40][4];
+	int	col;
+	int	row;
 }				t_blocks;
 typedef struct	s_board
 {
@@ -39,7 +41,7 @@ int				validate_blocks(char *file_name, int m, int n, int touch_side);
 int				ft_strcmp(const char *s1, const char *s2);
 void			ft_putstr(char const *s);
 void			ft_putchar(char c);
-void			save_coordinates(t_blocks *blocks, int fd, int x, int y);
+void			save_coordinates(t_blocks *blocks, int fd, int count);
 t_blocks		*create_blocks(char *file_name, int num_tetris);
 t_board			*create_first_board(int size);
 int				num_of_tetris(char *file_name);

@@ -6,12 +6,11 @@
 /*   By: yxie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 14:38:55 by yxie              #+#    #+#             */
-/*   Updated: 2019/07/02 17:16:11 by yxie             ###   ########.fr       */
+/*   Updated: 2019/07/03 11:04:41 by yxie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdio.h>
 
 int	validate_format(int fd, int col, int row, int count)
 {
@@ -42,7 +41,7 @@ int	validate_format(int fd, int col, int row, int count)
 	return (1);
 }
 
-int validate_blocks(char *file_name, int m, int n, int touch_side)
+int	validate_blocks(char *file_name, int m, int n, int touch_side)
 {
 	t_blocks	blocks;
 
@@ -56,7 +55,9 @@ int validate_blocks(char *file_name, int m, int n, int touch_side)
 			n = 0;
 			while (n < m)
 			{
-				if ((blocks.x[blocks.n][m] == (blocks.x[blocks.n][n] + 1) && blocks.y[blocks.n][m] == blocks.y[blocks.n][n]) || (blocks.x[blocks.n][m] == blocks.x[blocks.n][n]  && blocks.y[blocks.n][m] == (blocks.y[blocks.n][n] + 1)))
+				if ((blocks.x[blocks.n][m] == (blocks.x[blocks.n][n] + 1) &&
+blocks.y[blocks.n][m] == blocks.y[blocks.n][n]) || (blocks.x[blocks.n][m] ==
+blocks.x[blocks.n][n] && blocks.y[blocks.n][m] == (blocks.y[blocks.n][n] + 1)))
 					touch_side++;
 				n++;
 			}
@@ -86,6 +87,8 @@ int	validate_input(char *file_name)
 	close(fd);
 	fd = open(file_name, O_RDONLY);
 	if (validate_format(fd, a, b, c) == 0)
+		return (0);
+	if (num_of_tetris(file_name) > 26)
 		return (0);
 	if (validate_blocks(file_name, a, b, c) == 0)
 		return (0);
