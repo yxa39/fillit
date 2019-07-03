@@ -6,7 +6,7 @@
 /*   By: yxie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/01 14:34:30 by yxie              #+#    #+#             */
-/*   Updated: 2019/07/01 15:00:54 by yxie             ###   ########.fr       */
+/*   Updated: 2019/07/02 17:18:41 by yxie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void		save_coordinates(t_blocks *blocks, int fd, int x, int y)
 	while (get_next_line(fd, &line) > 0)
 	{
 		x = 0;
-		if (line == NULL)
+		if (ft_strcmp(line, "") == 0)
 		{
 			blocks->n++;
 			y = 0;
@@ -68,9 +68,9 @@ t_board		*create_first_board(int size)
 	board = (t_board *)malloc(sizeof(t_board));
 	board->i = 0;
 	board->size = size;
-	board->array = (char *)malloc((board->size + 1) *
+	board->str = (char *)malloc((board->size + 1) *
 			board->size * sizeof(char));
-	tmp = board->array;
+	tmp = board->str;
 	while (board->i < board->size)
 	{
 		board->j = 0;
@@ -113,10 +113,7 @@ int			square_size(int num_tetris)
 	while (size < (num_tetris * 4))
 	{
 		if (size * size >= (num_tetris * 4))
-			if (size < 4)
-				return (4);
-			else
-				return (size);
+			return (size);
 		else
 			size++;
 	}

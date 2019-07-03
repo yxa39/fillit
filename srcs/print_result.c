@@ -6,7 +6,7 @@
 /*   By: yxie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/01 15:02:52 by yxie              #+#    #+#             */
-/*   Updated: 2019/07/01 15:08:50 by yxie             ###   ########.fr       */
+/*   Updated: 2019/07/02 13:29:15 by yxie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	print_board(t_board board)
 	board.j = 0;
 	while (board.i < (board.size))
 	{
-		ft_putstr(board.array + board.i * (board.size + 1));
+		ft_putstr(board.str + board.i * (board.size + 1));
 		ft_putchar('\n');
 		board.i++;
 	}

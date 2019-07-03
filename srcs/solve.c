@@ -6,13 +6,13 @@
 /*   By: yxie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/01 15:09:28 by yxie              #+#    #+#             */
-/*   Updated: 2019/07/01 15:18:11 by yxie             ###   ########.fr       */
+/*   Updated: 2019/07/02 13:39:05 by yxie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-char *arraydup(char *array, int size)
+char *copy_board(char *str, int size)
 {
 	int		count;
 	char	*new;
@@ -25,7 +25,7 @@ char *arraydup(char *array, int size)
 	tmp = new;
 	while (count < len)
 	{
-		*tmp++ = *array++;
+		*tmp++ = *str++;
 		count++;
 	}
 	return (new);
@@ -44,7 +44,7 @@ void	create_board(t_board *board)
 	new->size = tmp->size;
 	new->i = 0;
 	new->j = 0;
-	new->array = arraydup(tmp->array, tmp->size);
+	new->str = copy_board(tmp->str, tmp->size);
 	new->next = NULL;
 }
 
