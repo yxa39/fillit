@@ -22,7 +22,7 @@ typedef struct	s_blocks
 	int	num;
 	int	n;
 	int	x[40][4];
-	int	y[40][4];	
+	int	y[40][4];
 }				t_blocks;
 typedef struct	s_board
 {
@@ -34,10 +34,9 @@ typedef struct	s_board
 }				t_board;
 int				get_next_line(const int fd, char **line);
 int				validate_input(char *file_name);
+int				validate_format(int fd, int col, int row, int count);
+int				validate_blocks(char *file_name, int m, int n, int touch_side);
 int				ft_strcmp(const char *s1, const char *s2);
-char			**ft_strsplit(char const *s, char c);
-char			*ft_strnew(size_t size);
-char			*ft_strncpy(char *dest, const char *src, size_t n);
 void			ft_putstr(char const *s);
 void			ft_putchar(char c);
 void			save_coordinates(t_blocks *blocks, int fd, int x, int y);

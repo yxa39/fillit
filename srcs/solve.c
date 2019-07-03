@@ -60,6 +60,7 @@ int	new_linked_board(t_board *tmp, t_blocks *blocks, int j, int i)
 	current->i = i;
 	return (add_block(current, blocks));
 }
+
 int	fillit(t_board *board, t_blocks *blocks, int j, int i)
 {
 	t_board *tmp;
@@ -86,7 +87,11 @@ int	fillit(t_board *board, t_blocks *blocks, int j, int i)
 			delete_last_block(board);
 			blocks->n--;
 			if (blocks->n < 0)
+			{
+				free(board->str);
+				free(board);
 				return (0);
+			}
 		}
 	}
 	return (1);
@@ -96,9 +101,21 @@ void solve(t_board *board, t_blocks *blocks)
 {
 	int	size;
 	t_board	*new;
+	t_board *tmp;
 
 	if (fillit(board, blocks, 0, 0) == 1)
+	{
 		print_result(board);
+		while (board->next != NULL)
+		{
+			tmp = board;
+			board = board->next;
+			free(tmp->str);
+			free(tmp);
+		}
+		free(board->str);
+		free(board);
+	}
 	else
 	{
 		size = (board->size + 1);

@@ -16,11 +16,13 @@ void		save_coordinates(t_blocks *blocks, int fd, int x, int y)
 {
 	int		count;
 	char	*line;
+	char	*tmp;
 
 	count = 0;
 	while (get_next_line(fd, &line) > 0)
 	{
 		x = 0;
+		tmp = line;
 		if (ft_strcmp(line, "") == 0)
 		{
 			blocks->n++;
@@ -38,6 +40,7 @@ void		save_coordinates(t_blocks *blocks, int fd, int x, int y)
 			x++;
 		}
 		y++;
+		free(tmp);
 	}
 }
 
@@ -100,6 +103,7 @@ int			num_of_tetris(char *file_name)
 	{
 		if (*line == '\0')
 			num_tetris++;
+		free(line);
 	}
 	close(fd);
 	return (num_tetris);

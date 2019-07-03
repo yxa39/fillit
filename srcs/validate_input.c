@@ -13,65 +13,54 @@
 #include "fillit.h"
 #include <stdio.h>
 
-int	validate_format(int fd)
+int	validate_format(int fd, int col, int row, int count)
 {
 	char	*line;
-	int		col;
-	int		row;
-	int		count;
 
-	row = 0;
-	count = 0;
 	while (get_next_line(fd, &line) > 0)
 	{
 		col = 0;
 		row++;
 		if (row >= 5 && row % 5 == 0 && ft_strcmp(line, "") != 0)
 			return (0);
-		if (row % 5 != 0)
+		while (row % 5 != 0 && line[col])
 		{
-			while (line[col])
-			{
-				if (!(line[col] == '.' || line[col] == '#'))
-					return (0);
-				if (line[col++] == '#')
-					count++;
-			}
-			if (col != 4)
+			if (!(line[col] == '.' || line[col] == '#'))
 				return (0);
+			if (line[col] == '#')
+				count++;
+			col++;
 		}
+		if (row % 5 != 0 && col != 4)
+			return (0);
+		if (row % 5 == 4 && count != 4)
+			return (0);
 		if (row % 5 == 4)
-		{
-			if (count != 4)
-				return (0);
 			count = 0;
-		}
+		free(line);
 	}
 	return (1);
 }
 
-int validate_blocks(char *file_name)
+int validate_blocks(char *file_name, int m, int n, int touch_side)
 {
 	t_blocks	blocks;
-	int			count;
-	int			n;
-	int			touch_side;
 
 	blocks = *create_blocks(file_name, num_of_tetris(file_name));
 	while (blocks.n < blocks.num)
 	{
-		count = 1;
+		m = 1;
 		touch_side = 0;
-		while (count < 4)
+		while (m < 4)
 		{
 			n = 0;
-			while (n < count)
+			while (n < m)
 			{
-				if ((blocks.x[blocks.n][count] == (blocks.x[blocks.n][n] + 1) && blocks.y[blocks.n][count] == blocks.y[blocks.n][n]) || (blocks.x[blocks.n][count] == blocks.x[blocks.n][n]  && blocks.y[blocks.n][count] == (blocks.y[blocks.n][n] + 1)))
+				if ((blocks.x[blocks.n][m] == (blocks.x[blocks.n][n] + 1) && blocks.y[blocks.n][m] == blocks.y[blocks.n][n]) || (blocks.x[blocks.n][m] == blocks.x[blocks.n][n]  && blocks.y[blocks.n][m] == (blocks.y[blocks.n][n] + 1)))
 					touch_side++;
 				n++;
 			}
-			count++;
+			m++;
 		}
 		if (touch_side < 3)
 			return (0);
@@ -84,15 +73,21 @@ int	validate_input(char *file_name)
 {
 	int		fd;
 	char	buff[BUFF_SIZE + 1];
+	int		a;
+	int		b;
+	int		c;
 
+	a = 0;
+	b = 0;
+	c = 0;
 	fd = open(file_name, O_RDONLY);
 	if (read(fd, buff, BUFF_SIZE) <= 0)
 		return (0);
 	close(fd);
 	fd = open(file_name, O_RDONLY);
-	if (validate_format(fd) == 0)
+	if (validate_format(fd, a, b, c) == 0)
 		return (0);
-	if (validate_blocks(file_name) == 0)
+	if (validate_blocks(file_name, a, b, c) == 0)
 		return (0);
 	return (1);
 }
