@@ -6,7 +6,7 @@
 /*   By: yxie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 13:10:03 by yxie              #+#    #+#             */
-/*   Updated: 2019/07/03 11:26:58 by yxie             ###   ########.fr       */
+/*   Updated: 2019/07/03 11:49:12 by yxie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ void	delete_last_block(t_board *board)
 		tmp_1 = tmp;
 		tmp = tmp->next;
 	}
+	free(tmp->str);
 	free(tmp);
 	tmp_1->next = NULL;
 }
