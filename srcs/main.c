@@ -34,6 +34,7 @@ int	main(int argc, char **argv)
 		blocks = create_blocks(argv[1], num_tetris);
 		board = create_first_board(square_size(num_tetris));
 		solve(board, blocks);
+		delete_board(board);
 	}
 	system("leaks fillit");
 	return (0);

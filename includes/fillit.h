@@ -38,6 +38,7 @@ int				get_next_line(const int fd, char **line);
 int				validate_input(char *file_name);
 int				validate_format(int fd, int col, int row, int count);
 int				validate_blocks(char *file_name, int m, int n, int touch_side);
+void			delete_board(t_board *board);
 int				ft_strcmp(const char *s1, const char *s2);
 void			ft_putstr(char const *s);
 void			ft_putchar(char c);

@@ -33,3 +33,16 @@ void	print_result(t_board *board)
 		tmp = tmp->next;
 	print_board(*tmp);
 }
+
+void	delete_board(t_board *board)
+{
+	t_board	*tmp;
+
+	while (board != NULL)
+	{
+		tmp = board;
+		board = board->next;
+		free(tmp->str);
+		free(tmp);
+	}
+}

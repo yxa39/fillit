@@ -43,10 +43,10 @@ int	validate_format(int fd, int col, int row, int count)
 
 int	validate_blocks(char *file_name, int m, int n, int touch_side)
 {
-	t_blocks	blocks;
+	t_blocks *blocks;
 
-	blocks = *create_blocks(file_name, num_of_tetris(file_name));
-	while (blocks.n < blocks.num)
+	blocks = create_blocks(file_name, num_of_tetris(file_name));
+	while (blocks->n < blocks->num)
 	{
 		m = 1;
 		touch_side = 0;
@@ -55,9 +55,9 @@ int	validate_blocks(char *file_name, int m, int n, int touch_side)
 			n = 0;
 			while (n < m)
 			{
-				if ((blocks.x[blocks.n][m] == (blocks.x[blocks.n][n] + 1) &&
-blocks.y[blocks.n][m] == blocks.y[blocks.n][n]) || (blocks.x[blocks.n][m] ==
-blocks.x[blocks.n][n] && blocks.y[blocks.n][m] == (blocks.y[blocks.n][n] + 1)))
+				if ((blocks->x[blocks->n][m] == (blocks->x[blocks->n][n] + 1) &&
+blocks->y[blocks->n][m] == blocks->y[blocks->n][n]) || (blocks->x[blocks->n][m] ==
+blocks->x[blocks->n][n] && blocks->y[blocks->n][m] == (blocks->y[blocks->n][n] + 1)))
 					touch_side++;
 				n++;
 			}
@@ -65,8 +65,9 @@ blocks.x[blocks.n][n] && blocks.y[blocks.n][m] == (blocks.y[blocks.n][n] + 1)))
 		}
 		if (touch_side < 3)
 			return (0);
-		blocks.n++;
+		blocks->n++;
 	}
+	free(blocks);
 	return (1);
 }
 
@@ -77,6 +78,7 @@ int	validate_input(char *file_name)
 	int		a;
 	int		b;
 	int		c;
+	t_blocks	*blocks;
 
 	a = 0;
 	b = 0;
