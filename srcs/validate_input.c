@@ -6,7 +6,7 @@
 /*   By: yxie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 14:38:55 by yxie              #+#    #+#             */
-/*   Updated: 2019/07/05 10:16:25 by yxie             ###   ########.fr       */
+/*   Updated: 2019/07/05 10:20:00 by yxie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,11 @@ blocks->x[blocks->n][n] && blocks->y[blocks->n][m] == (blocks->y[blocks->n][n] +
 
 int	validate_input(char *file_name)
 {
-	int		fd;
-	char	buff[BUFF_SIZE + 1];
-	int		a;
-	int		b;
-	int		c;
+	int			fd;
+	char		buff[BUFF_SIZE + 1];
+	int			a;
+	int			b;
+	int			c;
 	t_blocks	*blocks;
 
 	a = 0;
