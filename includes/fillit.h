@@ -6,7 +6,7 @@
 /*   By: yxie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/17 14:27:24 by yxie              #+#    #+#             */
-/*   Updated: 2019/07/03 12:14:08 by yxie             ###   ########.fr       */
+/*   Updated: 2019/07/05 10:09:40 by yxie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int				validate_input(char *file_name);
 int				validate_format(int fd, int col, int row, int count);
 int				validate_blocks(char *file_name, int m, int n, int touch_side);
 void			delete_board(t_board *board);
+t_board			*get_last_board(t_board *board);
 int				ft_strcmp(const char *s1, const char *s2);
 void			ft_putstr(char const *s);
 void			ft_putchar(char c);

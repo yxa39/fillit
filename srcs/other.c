@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_result.c                                     :+:      :+:    :+:   */
+/*   other.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yxie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/01 15:02:52 by yxie              #+#    #+#             */
-/*   Updated: 2019/07/03 12:12:27 by yxie             ###   ########.fr       */
+/*   Created: 2019/07/05 09:26:37 by yxie              #+#    #+#             */
+/*   Updated: 2019/07/05 10:10:39 by yxie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,14 @@ void	delete_board(t_board *board)
 		free(tmp->str);
 		free(tmp);
 	}
+}
+
+t_board	*get_last_board(t_board *board)
+{
+	t_board	*tmp;
+
+	tmp = board;
+	while (tmp->next != NULL)
+		tmp = tmp->next;
+	return (tmp);
 }

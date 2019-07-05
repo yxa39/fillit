@@ -6,7 +6,7 @@
 /*   By: yxie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/01 15:09:28 by yxie              #+#    #+#             */
-/*   Updated: 2019/07/03 12:14:11 by yxie             ###   ########.fr       */
+/*   Updated: 2019/07/05 10:12:08 by yxie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,7 @@ int		fillit(t_board *board, t_blocks *blocks, int j, int i)
 
 	while ((*blocks).n < (*blocks).num)
 	{
-		tmp = board;
-		while (tmp->next != NULL)
-			tmp = tmp->next;
+		tmp = get_last_board(board);
 		if (new_linked_board(tmp, blocks, j, i) == 1)
 		{
 			blocks->n++;
@@ -80,13 +78,11 @@ int		fillit(t_board *board, t_blocks *blocks, int j, int i)
 		else
 		{
 			delete_last_block(board);
-			while (tmp->next != NULL)
-				tmp = tmp->next;
+			tmp = get_last_board(board);
 			j = tmp->j;
 			i = tmp->i;
 			delete_last_block(board);
-			blocks->n--;
-			if (blocks->n < 0)
+			if (--(blocks->n) < 0)
 				return (0);
 		}
 	}
