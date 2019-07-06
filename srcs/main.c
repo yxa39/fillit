@@ -6,7 +6,7 @@
 /*   By: yxie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 09:56:41 by yxie              #+#    #+#             */
-/*   Updated: 2019/07/05 09:26:56 by yxie             ###   ########.fr       */
+/*   Updated: 2019/07/06 09:56:56 by yxie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ int	main(int argc, char **argv)
 		solve(board, blocks);
 		delete_board(board);
 	}
+	system("leaks fillit");
 	return (0);
 }
