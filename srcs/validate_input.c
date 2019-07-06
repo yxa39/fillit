@@ -43,31 +43,30 @@ int	validate_format(int fd, int col, int row, int count)
 
 int	validate_blocks(char *file_name, int m, int n, int touch_side)
 {
-	t_blocks *blocks;
+	t_blocks *blks;
 
-	blocks = create_blocks(file_name, num_of_tetris(file_name));
-	while (blocks->n < blocks->num)
+	blks = create_blocks(file_name, num_of_tetris(file_name));
+	while (blks->n < blks->num)
 	{
 		m = 1;
 		touch_side = 0;
 		while (m < 4)
 		{
-			n = 0;
-			while (n < m)
+			n = -1;
+			while (n++ < m)
 			{
-				if ((blocks->x[blocks->n][m] == (blocks->x[blocks->n][n] + 1) &&
-blocks->y[blocks->n][m] == blocks->y[blocks->n][n]) || (blocks->x[blocks->n][m] ==
-blocks->x[blocks->n][n] && blocks->y[blocks->n][m] == (blocks->y[blocks->n][n] + 1)))
+				if ((blks->x[blks->n][m] == (blks->x[blks->n][n] + 1) &&
+blks->y[blks->n][m] == blks->y[blks->n][n]) || (blks->x[blks->n][m] ==
+blks->x[blks->n][n] && blks->y[blks->n][m] == (blks->y[blks->n][n] + 1)))
 					touch_side++;
-				n++;
 			}
 			m++;
 		}
 		if (touch_side < 3)
 			return (0);
-		blocks->n++;
+		blks->n++;
 	}
-	free(blocks);
+	free(blks);
 	return (1);
 }
 
@@ -78,7 +77,6 @@ int	validate_input(char *file_name)
 	int			a;
 	int			b;
 	int			c;
-	t_blocks	*blocks;
 
 	a = 0;
 	b = 0;
