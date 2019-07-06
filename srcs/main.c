@@ -36,6 +36,5 @@ int	main(int argc, char **argv)
 		solve(board, blocks);
 		delete_board(board);
 	}
-	system("leaks fillit");
 	return (0);
 }
