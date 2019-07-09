@@ -6,7 +6,7 @@
 /*   By: yxie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/01 14:34:30 by yxie              #+#    #+#             */
-/*   Updated: 2019/07/03 12:14:04 by yxie             ###   ########.fr       */
+/*   Updated: 2019/07/09 13:32:41 by yxie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ t_blocks	*create_blocks(char *file_name, int num_tetris)
 {
 	int			fd;
 	t_blocks	*blocks;
-	char		*line;
 	int			count;
 
 	blocks = (t_blocks *)malloc(sizeof(t_blocks));

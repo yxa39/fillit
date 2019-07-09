@@ -6,7 +6,7 @@
 /*   By: yxie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/01 15:09:28 by yxie              #+#    #+#             */
-/*   Updated: 2019/07/05 10:12:08 by yxie             ###   ########.fr       */
+/*   Updated: 2019/07/09 13:41:52 by yxie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ void	solve(t_board *board, t_blocks *blocks)
 {
 	int		size;
 	t_board	*new;
-	t_board *tmp;
 
 	if (fillit(board, blocks, 0, 0) == 1)
 		print_result(board);

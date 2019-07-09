@@ -6,7 +6,7 @@
 /*   By: yxie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 09:56:41 by yxie              #+#    #+#             */
-/*   Updated: 2019/07/06 09:56:56 by yxie             ###   ########.fr       */
+/*   Updated: 2019/07/09 15:28:26 by yxie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	main(int argc, char **argv)
 	if (validate_input(argv[1]) == 0)
 	{
 		ft_putstr("error\n");
+		system("leaks fillit");
 		return (-1);
 	}
 	else

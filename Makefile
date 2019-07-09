@@ -6,7 +6,7 @@
 #    By: yxie <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/01 09:26:38 by yxie              #+#    #+#              #
-#    Updated: 2019/07/01 14:49:23 by yxie             ###   ########.fr        #
+#    Updated: 2019/07/09 14:08:38 by yxie             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ all: $(NAME)
 
 $(NAME):
 	@make -C $(LFT_PATH)
-	@gcc $(FLAGS) $(INC_FLAGS) $(SRCS) -o $(NAME) $(LFT_FLAGS)
+	@gcc $(CC_FLAGS) $(INC_FLAGS) $(SRCS) -o $(NAME) $(LFT_FLAGS)
 
 clean:
 	@make clean -C $(LFT_PATH)
