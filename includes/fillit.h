@@ -6,7 +6,7 @@
 /*   By: yxie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/17 14:27:24 by yxie              #+#    #+#             */
-/*   Updated: 2019/07/09 15:20:28 by yxie             ###   ########.fr       */
+/*   Updated: 2019/07/10 10:20:26 by yxie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ typedef struct	s_board
 int				add_block(t_board *current, t_blocks *blocks);
 t_blocks		*create_blocks(char *file_name, int num_tetris);
 t_board			*create_first_board(int size);
-int				right_num_lines(char *file_name, int fd);
 char			*copy_board(char *array, int size);
 void			create_board(t_board *board);
 void			delete_board(t_board *board);
@@ -54,6 +53,7 @@ int				new_linked_board(t_board *tmp, t_blocks *blocks, int j, int i);
 void			print_board(t_board board);
 void			print_result(t_board *board);
 void			place_block(t_board *current, t_blocks blocks);
+int				right_num_lines(char *file_name, int fd);
 int				square_size(int num_tetris);
 void			save_coordinates(t_blocks *blocks, int fd, int count);
 void			solve(t_board *board, t_blocks *blocks);
