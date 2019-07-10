@@ -6,7 +6,7 @@
 /*   By: yxie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 14:38:55 by yxie              #+#    #+#             */
-/*   Updated: 2019/07/09 16:20:21 by yxie             ###   ########.fr       */
+/*   Updated: 2019/07/10 10:11:15 by yxie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,41 +14,39 @@
 
 int	validate_format(int fd, int col, int row, int count)
 {
-	char *line;
+	char	*line;
+	int		if_correct;
 
+	if_correct = 1;
 	while (get_next_line(fd, &line) > 0)
 	{
 		col = 0;
 		row++;
 		if (row >= 5 && row % 5 == 0 && ft_strcmp(line, "") != 0)
-		{
-			free(line);
-			return (0);
-		}
+			if_correct = 0;
 		while (row % 5 != 0 && line[col])
 		{
 			if (!(line[col] == '.' || line[col] == '#'))
-			{
-				free(line);
-				return (0);
-			}
+				if_correct = 0;
 			if (line[col] == '#')
 				count++;
 			col++;
 		}
-		free(line);
 		if ((row % 5 != 0 && col != 4) || (row % 5 == 4 && count != 4))
-			return (0);
+			if_correct = 0;
 		if (row % 5 == 4)
 			count = 0;
+		free(line);
 	}
-	return (1);
+	return (if_correct);
 }
 
 int	validate_blocks(char *file_name, int m, int n, int touch_side)
 {
-	t_blocks *blks;
+	t_blocks	*blks;
+	int			if_correct;
 
+	if_correct = 1;
 	blks = create_blocks(file_name, num_of_tetris(file_name));
 	while (blks->n < blks->num)
 	{
@@ -58,23 +56,18 @@ int	validate_blocks(char *file_name, int m, int n, int touch_side)
 		{
 			n = -1;
 			while (n++ < m)
-			{
 				if ((blks->x[blks->n][m] == (blks->x[blks->n][n] + 1) &&
 blks->y[blks->n][m] == blks->y[blks->n][n]) || (blks->x[blks->n][m] ==
 blks->x[blks->n][n] && blks->y[blks->n][m] == (blks->y[blks->n][n] + 1)))
 					touch_side++;
-			}
 			m++;
 		}
 		if (touch_side < 3)
-		{
-			free(blks);
-			return (0);
-		}
+			if_correct = 0;
 		blks->n++;
 	}
 	free(blks);
-	return (1);
+	return (if_correct);
 }
 
 int	right_num_lines(char *file_name, int fd)
