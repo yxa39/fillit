@@ -6,7 +6,7 @@
 /*   By: yxie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 09:56:41 by yxie              #+#    #+#             */
-/*   Updated: 2019/07/10 11:04:31 by yxie             ###   ########.fr       */
+/*   Updated: 2019/07/10 13:19:37 by yxie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ int	main(int argc, char **argv)
 		board = create_first_board(square_size(num_tetris));
 		solve(board, blocks);
 		delete_board(board);
-		free(blocks);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: yxie <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 15:38:10 by yxie              #+#    #+#             */
-/*   Updated: 2019/06/24 09:45:01 by yxie             ###   ########.fr       */
+/*   Updated: 2019/07/11 10:15:27 by yxie             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
-# include <libc.h>
+# include <fcntl.h>
 # define BUFF_SIZE 100
 
 int					get_next_line(const int fd, char **line);
